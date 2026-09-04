@@ -48,6 +48,7 @@ The main areas of testing are:
 Pointers to styling for consistent tests:
 - There should be no member visibility defined on any test classes or methods, these should be left as package private if possible
 - Prefix all test methods with test
+- When creating in line variable definitions it would be preferebale to use the var keyword rather than using the object name
 - When producing test method names do not put any implementation or the outcome in the method name, only specify the state/behaviour which is occurring e.g. testDuplicatePaymentReceived.
 - Comments and test methods should be implementation/technology agnostic and should only describe high level behaviour
 - Write tests with a Given -> When -> Then structure where given is the state which is setup initially, when is the action/trigger which occurs and then is the assertions to test on
