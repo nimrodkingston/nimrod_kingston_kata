@@ -126,8 +126,7 @@ class PaymentConcurrencyTest {
 
     /**
      * Submits every payment from its own thread, each held at a barrier until all of them have
-     * arrived. Holding them means the requests genuinely overlap, rather than merely being started
-     * in quick succession while the earliest has already been answered.
+     * arrived. Holding them means the requests will overlap upon sending time
      */
     static List<Integer> submitTogether(List<String> payments) throws Exception {
         var senders = Executors.newFixedThreadPool(payments.size());

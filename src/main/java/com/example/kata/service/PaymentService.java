@@ -30,6 +30,10 @@ public class PaymentService {
         this.meterRegistry = meterRegistry;
     }
 
+    /**
+     * A service task which will create a new payment record in the database and send out a completion payment
+     * processed message at the end of processing
+     */
     @Transactional
     public void createPayment(String paymentId, String customerId, BigDecimal amount, String currency) {
         var payment = new PaymentModel();
@@ -50,6 +54,7 @@ public class PaymentService {
         }
     }
 
+    /** A service task which will attempt to retrieve a given payment's details when given the paymentId */
     public PaymentDto getPaymentByPaymentId(String paymentId) {
         try {
             var payment = paymentRepository.findPaymentByPaymentId(paymentId);

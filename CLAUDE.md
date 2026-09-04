@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Technical context
 This is an HTTP service written in Quarkus which is expected to handle large amounts of incoming requests as well as writes to persistent state.
 
-The persistent state of choice for this service is PostgreSQL
+The persistent state of choice for this service is PostgreSQL and is enabled by hibernate JPA.
+
+The service also uses smallrye's channel abstraction and implementation to send messages to in-memory channels
 
 ## Business context
 This is a payment service which is expected to receive requests for payment processing with high concurrency.
