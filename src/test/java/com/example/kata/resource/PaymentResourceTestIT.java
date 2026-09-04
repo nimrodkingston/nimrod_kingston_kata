@@ -1,6 +1,6 @@
 package com.example.kata.resource;
 
-import com.example.kata.dto.PaymentRequest;
+import com.example.kata.dto.PaymentDto;
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * stand processing in: they are the only place the de-duplication rule is proven end to end.
  */
 @QuarkusIntegrationTest
-class PaymentResourceIT {
+class PaymentResourceTestIT {
 
     static final int ACCEPTED = 200;
     static final int BAD_REQUEST = 400;
@@ -91,7 +91,7 @@ class PaymentResourceIT {
 
     // --- Helpers -------------------------------------------------------------
 
-    static int createPayment(PaymentRequest payment) {
+    static int createPayment(PaymentDto payment) {
         return given()
                 .contentType(ContentType.JSON)
                 .body(payment)
@@ -111,8 +111,8 @@ class PaymentResourceIT {
                 .statusCode();
     }
 
-    static PaymentRequest payment(String paymentId, String customerId, String amount, String currency) {
-        return new PaymentRequest(paymentId, customerId, new BigDecimal(amount), currency);
+    static PaymentDto payment(String paymentId, String customerId, String amount, String currency) {
+        return new PaymentDto(paymentId, customerId, new BigDecimal(amount), currency);
     }
 
     static String nextPaymentId() {
